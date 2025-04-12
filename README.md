@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Teste Técnico - Cadastro de Usuários
 
-## Getting Started
+Este projeto é uma aplicação web simples para cadastro de usuários, desenvolvida como parte de um teste técnico para avaliação de habilidades Full Stack.
 
-First, run the development server:
+## ✨ Tecnologias Utilizadas
+
+- **Next.js (com TypeScript)**: Framework React moderno que oferece SSR/SSG e ótima estrutura de projeto.
+- **PostgreSQL**: Banco de dados relacional para armazenamento persistente dos usuários.
+- **React Hook Form + Zod**: Validação de formulários com integração robusta e tipagem segura.
+- **Material UI (MUI)**: Biblioteca de componentes para interface moderna.
+- **bcryptjs & jsonwebtoken**: Criptografia de senhas e geração de tokens.
+- **Tailwind CSS**: Utilizado para estilização rápida e responsiva.
+- **Jest**: Configurado para testes (embora testes não tenham sido implementados neste escopo).
+
+---
+
+## ⚙️ Como rodar o projeto localmente
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/misereitor/teste-king.git
+cd teste-king
+```
+
+### 2. Instale as dependências
+
+```bash
+npm install
+```
+
+### 3. Configure o banco de dados
+
+Crie um banco PostgreSQL local e configure as variáveis de ambiente no arquivo `.env`:
+
+```env
+DATABASE_URL=postgres://usuario:senha@localhost:5432/seubanco
+PGHOST=localhost
+PGDATABASE=seubanco
+PGUSER=usuario
+PGPASSWORD=senha
+SECRET_KEY=algumasecretkeysegura
+```
+
+> ⚠️ **Importante:** As queries SQL foram feitas manualmente, sem o uso de ORMs como Prisma.
+
+### 4. Rode o servidor de desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧪 Funcionalidades
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Cadastro de usuário com campos: **Nome**, **Email** e **Senha**.
+- Validação de dados com `react-hook-form` + `zod`.
+- Exibição dinâmica da lista de usuários cadastrados (sem recarregar a página).
+- Estrutura organizada e modularizada.
+- Senhas criptografadas antes de salvar no banco.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A aplicação está hospedada no Vercel:  
+🔗 [https://teste-king.vercel.app](https://teste-king.vercel.app)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧑‍⚖️ Licença
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está licenciado sob a licença [MIT](LICENSE).
+
+---
+
+## 📬 Contato
+
+Caso queira saber mais ou tenha dúvidas:  
+**GitHub:** [@misereitor](https://github.com/misereitor)
