@@ -36,14 +36,19 @@ export const schemaUpdateUser = z.object({
   email: z.string().email('Insira um e-mail válido')
 });
 
-export const schemaUpdateUserPassword = z.object({
-  password: z
-    .string()
-    .min(8, 'A senha tem que ter ao menos 8 caracteres')
-    .max(100, 'A senha tem que ter no máximo 100 caracteres')
-    .superRefine((val, ctx) => validatePassword(val, ctx)),
-  confirmPassword: z.string()
-});
+export const schemaUpdateUserPassword = z
+  .object({
+    password: z
+      .string()
+      .min(8, 'A senha tem que ter ao menos 8 caracteres')
+      .max(100, 'A senha tem que ter no máximo 100 caracteres')
+      .superRefine((val, ctx) => validatePassword(val, ctx)),
+    confirmPassword: z.string()
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ['confirmPassword'],
+    message: 'As senhas não conferem'
+  });
 
 export type UserRegisterSchema = z.infer<typeof schemaUserRegister>;
 export type UpdateUserSchema = z.infer<typeof schemaUpdateUser>;

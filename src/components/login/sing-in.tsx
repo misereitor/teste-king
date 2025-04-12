@@ -69,18 +69,7 @@ export default function SingIn({ setTypeSing }: Props) {
             type="password"
           />
         </div>
-        <div className="flex justify-end w-full">
-          <Button
-            variant="text"
-            disabled={loading}
-            onClick={() => setTypeSing(2)}
-            sx={{
-              textTransform: 'none'
-            }}
-          >
-            Recuperar sua senha?
-          </Button>
-        </div>
+        <div className="flex justify-end w-full"></div>
         <div className="flex items-center justify-center flex-col w-80 mx-auto mt-2">
           <Button
             type="submit"

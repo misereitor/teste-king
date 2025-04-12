@@ -14,7 +14,6 @@ import { cookies } from 'next/headers';
 import { UserRegisterSchema } from '@/schema/user-schema';
 import { User, UserRegister } from '@/model/user';
 import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
 
 export async function loginUserService(email: string, password: string) {
   try {
@@ -62,6 +61,36 @@ export async function loginUserService(email: string, password: string) {
     };
   }
   redirect('/home');
+}
+
+export async function chackPasswordUserServer(email: string, password: string) {
+  try {
+    const loginUser = await getUserByEmail(email.toLowerCase());
+    if (!loginUser) {
+      return {
+        success: false,
+        message: 'Login e/ou senha inválidos'
+      };
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, loginUser.password);
+    if (!isPasswordValid) {
+      return {
+        success: false,
+        message: 'Login e/ou senha inválidos'
+      };
+    }
+    return {
+      success: true,
+      message: 'Sucesso na verificação de senha'
+    };
+  } catch (error) {
+    console.error('Erro ao checar a senha:', error);
+    return {
+      success: false,
+      message: 'Erro ao checar a senha'
+    };
+  }
 }
 
 export async function registerUserService(userRegister: UserRegisterSchema) {
